@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-取钱</title>
+</head>
+<body>
+    <script>
+        let money = 1000
+        while(true){
+            let cz = +prompt(`
+            请你选择操作：
+            1.存款
+            2.取款
+            3.查看余额
+            4. 退出
+            `)
+            if(cz === 4){
+                break
+            }
+            switch(cz){
+        case 1:
+            // 存款
+            let cq = +prompt('存多少钱：')
+            money += cq
+            break
+        case 2:
+            // 取款
+            let qq = +prompt('取多少钱：')
+            money -= qq
+            break
+        case 3:
+            //余额
+            alert(`余额是：${money}`)
+            break
+            }
+        }
+    </script>
+</body>
+</html>
