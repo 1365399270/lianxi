@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>04-转换时间</title>
+</head>
+<body>
+    <script>
+        let second = prompt('请输入秒数')
+        function getTine(t){
+            // 计算 时 分 秒
+            // 时 h = parseInt(总秒数 / 60 / 60 % 24)
+            // 分 m = parseInt(总秒数 / 60 % 60)
+            // 秒 s = parseInt(总秒数 % 60)
+            
+            let h = parseInt(t / 60 / 60 % 24)
+            let m = parseInt(t / 60 % 60)
+            let s = parseInt(t % 60)
+            // 补零
+            h = h < 10 ? '0' + h : h
+            m = m < 10 ? '0' + m : m
+            s = s < 10 ? '0' + s : s
+            return `${h}:${m}:${s}`
+        }
+        let str = getTine(second)
+        document.write(str)
+    </script>
+</body>
+</html>
