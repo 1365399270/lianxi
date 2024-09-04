@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-随机点名</title>
+</head>
+<body>
+    <script>
+        let arr = ['小明','小红','小刚','小丽']
+            let random = Math.floor(Math.random() * arr.length)
+            document.write(arr[random])
+            // 删除随机到的名字
+            // .splice(起始位置，删除的个数)
+            arr.splice(random,1)
+            console.log(arr);
+
+    </script>
+</body>
+</html>
