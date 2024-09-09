@@ -81,6 +81,7 @@
     <script>
       function getRandomColor(flag = true) {
         if (flag) {
+          let str = "#";
           let arr = [
             "0",
             "1",
@@ -98,8 +99,7 @@
             "d",
             "e",
             "f",
-          ];
-          let str = "#";
+          ]
           for (let i = 0; i <= 6; i++) {
             let random = Math.floor(Math.random() * arr.length);
             str += arr[random];
