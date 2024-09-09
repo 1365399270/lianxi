@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        padding-top: 100px;
+        height: 3000px;
+      }
+      div {
+        display: block;
+        margin: 100px;
+        overflow: scroll;
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+      }
+    </style>
+  </head>
+  <div>
+    奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙
+    奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙
+    奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙
+    奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙
+    奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙
+    奉仙奉仙奉仙奉仙奉仙 奉仙奉仙奉仙奉仙奉仙
+  </div>
+  <body>
+    <script>
+      // 页面滚动事件
+      const div = document.querySelector("div");
+      window.addEventListener("scroll", function () {
+        // 获取html的写法
+        // document.documentElement
+        const n = document.documentElement.scrollTop;
+        if (n >= 100) {
+          div.style.display = "block";
+        } else {
+          div.style.display = "none";
+        }
+      });
+
+      //   div.addEventListener("scroll", function () {
+      //     // scrollTop 被卷去的头部
+      //     console.log(div.scrollTop);
+      //   });
+    </script>
+  </body>
+</html>
