@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 要存储一个名字 'uname' 'pink老师'
+      // localStorage.setItem('键'， '值')
+      localStorage.setItem("uname", "pink老师");
+      // 获取方式 都加引号
+      console.log(localStorage.getItem("uname"));
+      // 要删除本地储存 只删除名字'
+      localStorage.removeItem("uname");
+      // 改 如果原来有值给键 则是改 如果没有这个键 则是增
+      localStorage.setItem("uname", "pink老师");
+
+      // 存一个年龄
+      // 本地存储只能存储字符串数据类型
+      localStorage.setItem("age", 18);
+      console.log(localStorage.getItem("age"));
+    </script>
+  </body>
+</html>
