@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>学生信息管理</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .title {
+        margin: 0 auto;
+        width: 800px;
+        border-collapse: collapse;
+        color: #004085;
+        text-align: right;
+      }
+      span {
+        color: rgb(255, 0, 0);
+        font-weight: bold;
+      }
+
+      a {
+        text-decoration: none;
+        color: #721c24;
+      }
+      h1 {
+        text-align: center;
+        color: #333;
+        margin: 20px 0;
+      }
+      table {
+        margin: 0 auto;
+        width: 800px;
+        border-collapse: collapse;
+        color: #004085;
+      }
+      th {
+        padding: 10px;
+        background: #cfe5ff;
+
+        font-size: 20px;
+        font-weight: 400;
+      }
+      td,
+      th {
+        border: 1px solid #b8daff;
+      }
+      td {
+        padding: 10px;
+        color: #666;
+        text-align: center;
+        font-size: 16px;
+      }
+      tbody tr {
+        background: #fff;
+      }
+      tbody tr:hover {
+        background: #e1ecf8;
+      }
+      .info {
+        width: 990px;
+        margin: 50px auto;
+        text-align: center;
+      }
+      .info input,
+      .info select {
+        width: 80px;
+        height: 27px;
+        outline: none;
+        border-radius: 5px;
+        border: 1px solid #b8daff;
+        padding-left: 5px;
+        box-sizing: border-box;
+        margin-right: 15px;
+      }
+      .info button {
+        width: 60px;
+        height: 27px;
+        background-color: #004085;
+        outline: none;
+        border: 0;
+        color: #fff;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+      .info .age {
+        width: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>新增学员</h1>
+    <form class="info" autocomplete="off">
+      姓名：<input type="text" class="uname" name="uname" /> 年龄：<input
+        type="text"
+        class="age"
+        name="age"
+      />
+      国籍：<input type="text" class="nationality" name="nationality" />
+      性别:
+      <select name="gender" class="gender">
+        <option value="男">男</option>
+        <option value="女">女</option>
+        <option value="蛆">蛆</option>
+      </select>
+      薪资：<input type="text" class="salary" name="salary" /> 就业城市：<select
+        name="city"
+        class="city"
+      >
+        <option value="北京">北京</option>
+        <option value="上海">上海</option>
+        <option value="广州">广州</option>
+        <option value="深圳">深圳</option>
+        <option value="曹县">曹县</option>
+        <option value="日本">日本</option>
+        <option value="本地">本地</option>
+      </select>
+      <button class="add">录入</button>
+    </form>
+
+    <h1>就业榜</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>学号</th>
+          <th>姓名</th>
+          <th>年龄</th>
+          <th>性别</th>
+          <th>薪资</th>
+          <th>国籍</th>
+          <th>就业城市</th>
+          <th>录入时间</th>
+          <th>操作</th>
+        </tr>
+        <div class="title">共有数据<span> 0 </span>条</div>
+      </thead>
+      <tbody>
+        <!-- 
+        <tr>
+          <td>1001</td>
+          <td>欧阳霸天</td>
+          <td>19</td>
+          <td>男</td>
+          <td>15000</td>
+          <td>上海</td>
+          <td>
+            <a href="javascript:">删除</a>
+          </td>
+        </tr> 
+        -->
+      </tbody>
+    </table>
+    <script>
+      const initData = [
+        {
+          stuId: 1,
+          uname: "祝昊陨",
+          age: 3,
+          gender: "蛆",
+          salary: "5",
+          nationality: "倭寇",
+          city: "曹县",
+          time: "2022/10/10 20:29:21",
+        },
+      ];
+
+      // localStorage.setItem("data", JSON.stringify(initData));
+      // 渲染业务
+      // 先读取本地存储数据
+      // 本地存储有数据则记得转换为对象然后存储到变量里面，后期用于渲染
+      // 如果没有数据则为 空数据代替
+      const arr = JSON.parse(localStorage.getItem("data"));
+      console.log(arr);
+
+      // 利用map和join方法渲染 返回对应tr数组
+      const tbody = document.querySelector("tbody");
+
+      function render() {
+        const trArr = arr.map(function (ele, index) {
+          return `
+            <tr>
+              <td>${ele.stuId}</td>
+              <td>${ele.uname}</td>
+              <td>${ele.age}</td>
+              <td>${ele.gender}</td>
+              <td>${ele.salary}</td>
+              <td>${ele.nationality}</td>
+              <td>${ele.city}</td>
+              <td>${ele.time}</td>
+              <td>
+                 <a href="javascript:" data-id=${index}>删除</a>
+              </td>
+            </tr>
+          `;
+        });
+        console.log(trArr);
+        // 把数组转换为字符串join
+        // 把生成的字符串追加给tbody
+        tbody.innerHTML = trArr.join("");
+        // 显示几条数据
+        document.querySelector(".title span").innerHTML = arr.length;
+      }
+      render();
+
+      // 新增功能
+      const info = document.querySelector(".info");
+      // 获取表单
+      const uname = document.querySelector(".uname");
+      const age = document.querySelector(".age");
+      const gender = document.querySelector(".gender");
+      const salary = document.querySelector(".salary");
+      const nationality = document.querySelector(".nationality");
+      const city = document.querySelector(".city");
+      info.addEventListener("submit", function (e) {
+        // 阻止表单的默认提交行为
+        e.preventDefault();
+        // 判断表单是否为空
+        if (
+          !uname.value ||
+          !age.value ||
+          !gender.value ||
+          !salary.value ||
+          !city.value
+        ) {
+          return alert("请填写完整信息");
+        }
+
+        // 创建对象
+        const obj = {
+          stuId: arr.length ? arr[arr.length - 1].stuId + 1 : 1,
+          uname: uname.value,
+          age: age.value,
+          gender: gender.value,
+          salary: salary.value,
+          nationality: nationality.value,
+          city: city.value,
+          time: new Date().toLocaleString(),
+        };
+        arr.push(obj);
+        // 清空表单 .reset() 重置
+        info.reset();
+        // 调用渲染函数
+        render();
+        // 把数组重新存储到本地存储
+        localStorage.setItem("data", JSON.stringify(arr));
+      });
+
+      // 删除功能
+      // 采用事件委托给tbody添加点击事件
+      tbody.addEventListener("click", function (e) {
+        // 判断是否点击了删除
+        if (e.target.tagName === "A") {
+          // 得到当前点击链接索引号
+          console.log(e.target.dataset.id);
+          // 确认对话框是否删除
+          if (confirm("确认删除吗？")) {
+            // 删除当前索引号对应的对象
+            arr.splice(e.target.dataset.id, 1);
+            // 调用渲染函数
+            render();
+            // 把数组重新存储到本地存储
+            localStorage.setItem("data", JSON.stringify(arr));
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
