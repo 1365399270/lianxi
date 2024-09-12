@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea name="" id="" cols="30" role="30"></textarea>
+    <button>提交</button>
+    <div></div>
+    <script>
+      const tx = document.querySelector("textarea");
+      const btn = document.querySelector("button");
+      const div = document.querySelector("div");
+      // 点击事件
+      btn.addEventListener("click", function () {
+        div.innerHTML = tx.value.replace(/激情|基情/g, "**");
+        tx.value = "";
+      });
+    </script>
+  </body>
+</html>
